@@ -1,0 +1,13 @@
+version: '2'
+catalog:
+  name: "Postgres Replication"
+  version: "v0.1"
+  description: "Postgres Replication"
+  minimum_rancher_version: v1.1.0
+  questions:
+    - variable: lb_port
+      description: "Port to access PostgreSQL from external services"
+      label: "Postgres LB Port"
+      required: true
+      default: 5432
+      type: "int"

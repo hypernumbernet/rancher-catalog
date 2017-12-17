@@ -1,0 +1,7 @@
+name: Postgres Replication
+description: |
+Postgres Replication Test
+version: v0.1
+category: Databases
+maintainer: Tomohito Inoue
+projectURL: https://github.com/hypernumbernet/rancher-catalog
