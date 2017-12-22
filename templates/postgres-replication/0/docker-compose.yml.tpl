@@ -37,7 +37,7 @@ services:
     labels:
       io.rancher.sidekicks: postgres-data
     {{- if ne .Values.host_label ""}}
-      io.rancher.scheduler.affinity:host_label: ${host_label}
+      io.rancher.scheduler.affinity:host_label: ${label_master}
     {{- end}}
     volumes_from:
       - postgres-data
