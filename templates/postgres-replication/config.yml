@@ -1,6 +1,6 @@
 name: Postgres Replication
 description: |
-Postgres Replication Test
+Postgres Replication
 version: v0.1
 category: Databases
 maintainer: Tomohito Inoue
