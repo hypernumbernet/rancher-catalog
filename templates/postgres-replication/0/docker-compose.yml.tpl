@@ -4,9 +4,9 @@ services:
     image: rancher/lb-service-haproxy
     ports:
       - ${lb_port}
-    {{- if ne .Values.label_master ""}}
+    {{- if ne .Values.label_master_lb ""}}
     labels:
-      io.rancher.scheduler.affinity:host_label: ${label_master}
+      io.rancher.scheduler.affinity:host_label: ${label_master_lb}
     {{- end}}
 
   postgres-lb-slave:
@@ -36,8 +36,8 @@ services:
     stdin_open: true
     labels:
       io.rancher.sidekicks: postgres-data
-    {{- if ne .Values.label_master ""}}
-      io.rancher.scheduler.affinity:host_label: ${label_master}
+    {{- if ne .Values.label_master_db ""}}
+      io.rancher.scheduler.affinity:host_label: ${label_master_db}
     {{- end}}
     volumes_from:
       - postgres-data

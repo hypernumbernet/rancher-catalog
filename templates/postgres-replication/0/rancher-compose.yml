@@ -14,40 +14,47 @@ catalog:
       description: "Postgres Database"
       label: "Postgres Database"
       required: true
-      default: "postgres_sb"
+      default: "database1"
       type: "string"
     - variable: postgres_user
       description: "Postgres User"
       label: "Postgres User"
       required: true
-      default: "postgres_user"
+      default: "user"
       type: "string"
     - variable: postgres_password
       description: "Postgres Password"
       label: "Postgres Password"
       required: true
-      default: "postgres_password"
+      default: "password"
       type: "string"
-    - variable: label_master
+    - variable: label_master_lb
       label: "Host with Label to put LB Master on"
       description: |
-        Example: 'postgres=master'
+        Example: 'postgres-lb=master'
       required: false
-      default: ""
+      default: "postgres-lb=master"
+      type: "string"
+    - variable: label_master_db
+      label: "Host with Label to put DB Master on"
+      description: |
+        Example: 'postgres-db=master'
+      required: false
+      default: "postgres-db=master"
       type: "string"
     - variable: label_slave_lb
       label: "Host with Label to put LB Slave on"
       description: |
-        Example: 'postgres=slave_lb'
+        Example: 'postgres-lb=slave'
       required: false
-      default: ""
+      default: "postgres-lb=slave"
       type: "string"
     - variable: label_slave_db
       label: "Host with Label to put DB Slave on"
       description: |
-        Example: 'postgres=slave_db'
+        Example: 'postgres-db=slave'
       required: false
-      default: ""
+      default: "postgres-db=slave"
       type: "string"
     - variable: postgres_scale
       description: "Number of postgres replication slaves."
