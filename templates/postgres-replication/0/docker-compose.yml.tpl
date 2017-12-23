@@ -21,7 +21,7 @@ services:
   postgres-data:
     image: busybox
     labels:
-      io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
       io.rancher.container.start_once: true
     volumes:
@@ -61,7 +61,7 @@ services:
     {{- if ne .Values.label_slave_db ""}}
       io.rancher.scheduler.affinity:host_label: ${label_slave_db}
     {{- end}}
-      io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
     volumes_from:
       - postgres-data
