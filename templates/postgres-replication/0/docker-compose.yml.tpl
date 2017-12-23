@@ -1,23 +1,5 @@
 version: '2'
 services:
-  postgres-lb-master:
-    image: rancher/lb-service-haproxy
-    ports:
-      - ${lb_port}
-    {{- if ne .Values.label_master_lb ""}}
-    labels:
-      io.rancher.scheduler.affinity:host_label: ${label_master_lb}
-    {{- end}}
-
-  postgres-lb-slave:
-    image: rancher/lb-service-haproxy
-    ports:
-      - ${lb_port}
-    {{- if ne .Values.label_slave_lb ""}}
-    labels:
-      io.rancher.scheduler.affinity:host_label: ${label_slave_lb}
-    {{- end}}
-
   postgres-data:
     image: busybox
     labels:
@@ -69,6 +51,25 @@ services:
      - '5432'
     links:
      - 'postgres-master'
+
+postgres-lb-master:
+    image: rancher/lb-service-haproxy
+    ports:
+      - ${lb_port}
+    {{- if ne .Values.label_master_lb ""}}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${label_master_lb}
+    {{- end}}
+
+  postgres-lb-slave:
+    image: rancher/lb-service-haproxy
+    ports:
+      - ${lb_port}
+    {{- if ne .Values.label_slave_lb ""}}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${label_slave_lb}
+    {{- end}}
+
 volumes:
   pgdata:
     driver: local
