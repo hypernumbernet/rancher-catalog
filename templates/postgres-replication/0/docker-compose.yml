@@ -26,7 +26,7 @@ services:
     volumes_from:
       - postgres-data
     expose:
-     - '5432'
+      - '5432'
 
   postgres-slave:
     image: 'danieldent/postgres-replication'
@@ -48,9 +48,9 @@ services:
     volumes_from:
       - postgres-data
     expose:
-     - '5432'
+      - '5432'
     links:
-     - 'postgres-master'
+      - 'postgres-master'
 
   postgres-lb-master:
     image: rancher/lb-service-haproxy

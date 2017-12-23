@@ -64,6 +64,22 @@ catalog:
       type: "int"
 
 services:
+  postgres-master:
+    scale: 1
+    health_check:
+      port: 5432
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
+  postgres-slave:
+    scale: ${postgres_scale}
+    health_check:
+      port: 5432
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
   postgres-lb-master:
     scale: 1
     lb_config:
@@ -85,27 +101,11 @@ services:
       certs: []
       port_rules:
       - protocol: tcp
-        service: postgres-slave
+        service: $${stack_name}/postgres-slave
         source_port: ${lb_port}
         target_port: 5432
     health_check:
       port: 42
-      interval: 2000
-      unhealthy_threshold: 3
-      healthy_threshold: 2
-      response_timeout: 2000
-  postgres-master:
-    scale: 1
-    health_check:
-      port: 5432
-      interval: 2000
-      unhealthy_threshold: 3
-      healthy_threshold: 2
-      response_timeout: 2000
-  postgres-slave:
-    scale: ${postgres_scale}
-    health_check:
-      port: 5432
       interval: 2000
       unhealthy_threshold: 3
       healthy_threshold: 2
