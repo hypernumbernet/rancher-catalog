@@ -101,7 +101,7 @@ services:
       certs: []
       port_rules:
       - protocol: tcp
-        service: $${stack_name}/postgres-slave
+        service: postgres-replication/postgres-slave
         source_port: ${lb_port}
         target_port: 5432
     health_check:
