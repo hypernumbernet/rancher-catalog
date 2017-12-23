@@ -52,7 +52,7 @@ services:
     links:
      - 'postgres-master'
 
-postgres-lb-master:
+  postgres-lb-master:
     image: rancher/lb-service-haproxy
     ports:
       - ${lb_port}
