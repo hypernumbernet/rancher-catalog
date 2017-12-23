@@ -13,9 +13,9 @@ services:
     image: rancher/lb-service-haproxy
     ports:
       - ${lb_port}
-    {{- if ne .Values.label_slave ""}}
+    {{- if ne .Values.label_slave_lb ""}}
     labels:
-      io.rancher.scheduler.affinity:host_label: ${label_slave}
+      io.rancher.scheduler.affinity:host_label: ${label_slave_lb}
     {{- end}}
 
   postgres-data:
@@ -36,7 +36,7 @@ services:
     stdin_open: true
     labels:
       io.rancher.sidekicks: postgres-data
-    {{- if ne .Values.host_label ""}}
+    {{- if ne .Values.label_master ""}}
       io.rancher.scheduler.affinity:host_label: ${label_master}
     {{- end}}
     volumes_from:
@@ -51,20 +51,20 @@ services:
       POSTGRES_USER: ${postgres_user}
       POSTGRES_PASSWORD: ${postgres_password}
       PGDATA: '/var/lib/postgresql/data/pgdata'
-      REPLICATE_FROM: 'pg-master'
+      REPLICATE_FROM: 'postgres-master'
     tty: true
     stdin_open: true
     labels:
       io.rancher.sidekicks: postgres-data
-    {{- if ne .Values.host_label ""}}
-      io.rancher.scheduler.affinity:host_label: ${host_label}
+    {{- if ne .Values.label_slave_db ""}}
+      io.rancher.scheduler.affinity:host_label: ${label_slave_db}
     {{- end}}
     volumes_from:
       - postgres-data
     expose:
      - '5432'
     links:
-     - 'pg-master'
+     - 'postgres-master'
 volumes:
   pgdata:
     driver: local

@@ -35,16 +35,23 @@ catalog:
       required: false
       default: ""
       type: "string"
-    - variable: label_slave
+    - variable: label_slave_lb
       label: "Host with Label to put LB Slave on"
       description: |
-        Example: 'postgres=slave'
+        Example: 'postgres=slave_lb'
       required: false
       default: ""
       type: "string"
-    - variable: "postgres_scale"
+    - variable: label_slave_db
+      label: "Host with Label to put DB Slave on"
+      description: |
+        Example: 'postgres=slave_db'
+      required: false
+      default: ""
+      type: "string"
+    - variable: postgres_scale
       description: "Number of postgres replication slaves."
-      label: "Zk Nodes:"
+      label: "Postgres scale:"
       required: true
       default: 3
       type: "int"
@@ -96,4 +103,3 @@ services:
       unhealthy_threshold: 3
       healthy_threshold: 2
       response_timeout: 2000
-
