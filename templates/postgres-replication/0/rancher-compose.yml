@@ -72,14 +72,14 @@ services:
       unhealthy_threshold: 3
       healthy_threshold: 2
       response_timeout: 2000
-#  postgres-slave:
-#    scale: ${postgres_scale}
-#    health_check:
-#      port: 5432
-#      interval: 2000
-#      unhealthy_threshold: 3
-#      healthy_threshold: 2
-#      response_timeout: 2000
+  postgres-slave:
+    scale: ${postgres_scale}
+    health_check:
+      port: 5432
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
   postgres-lb-master:
     scale: 1
     lb_config:
