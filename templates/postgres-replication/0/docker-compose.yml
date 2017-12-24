@@ -43,6 +43,7 @@ services:
       io.rancher.scheduler.affinity:host_label: ${label_slave_db}
     {{- end}}
       io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
     volumes_from:
       - postgres-data
     expose:
