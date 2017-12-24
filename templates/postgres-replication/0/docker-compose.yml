@@ -2,9 +2,8 @@ version: '2'
 services:
   postgres-data:
     image: busybox
+#    net: none
     labels:
-      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
-      io.rancher.container.hostname_override: container_name
       io.rancher.container.start_once: true
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
@@ -43,6 +42,7 @@ services:
     {{- if ne .Values.label_slave_db ""}}
       io.rancher.scheduler.affinity:host_label: ${label_slave_db}
     {{- end}}
+      io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     volumes_from:
       - postgres-data
     expose:
@@ -71,4 +71,4 @@ services:
 volumes:
   pgdata:
     driver: local
-    per_container: true
+#    per_container: true
