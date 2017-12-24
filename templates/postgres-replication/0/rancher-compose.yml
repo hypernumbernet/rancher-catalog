@@ -32,28 +32,28 @@ catalog:
       label: "Host with Label to put LB Master on"
       description: |
         Example: 'postgres-lb=master'
-      required: false
+      required: true
       default: "postgres-lb=master"
       type: "string"
     - variable: label_master_db
       label: "Host with Label to put DB Master on"
       description: |
         Example: 'postgres-db=master'
-      required: false
+      required: true
       default: "postgres-db=master"
       type: "string"
     - variable: label_slave_lb
       label: "Host with Label to put LB Slave on"
       description: |
         Example: 'postgres-lb=slave'
-      required: false
+      required: true
       default: "postgres-lb=slave"
       type: "string"
     - variable: label_slave_db
       label: "Host with Label to put DB Slave on"
       description: |
         Example: 'postgres-db=slave'
-      required: false
+      required: true
       default: "postgres-db=slave"
       type: "string"
     - variable: postgres_scale
