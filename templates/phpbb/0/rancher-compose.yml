@@ -1,0 +1,44 @@
+version: '2'
+catalog:
+  name: "phpBB"
+  version: "v0.1"
+  description: "phpBB"
+  questions:
+    - variable: lb_port
+      description: "Port to access phpBB"
+      label: "phpBB LB Port"
+      required: true
+      default: 80
+      type: "int"
+    - variable: host_label
+      label: "Host with Label to put phpBB on"
+      description: |
+        Example: 'phpbb=true'
+      required: true
+      default: "phpbb=true"
+      type: "string"
+
+services:
+  phpbb:
+    scale: 1
+    health_check:
+      port: 80
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
+  phpbb-lb:
+    scale: 1
+    lb_config:
+      certs: []
+      port_rules:
+      - protocol: tcp
+        service: phpbb
+        source_port: ${lb_port}
+        target_port: 80
+    health_check:
+      port: 42
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000

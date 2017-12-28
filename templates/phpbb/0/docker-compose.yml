@@ -1,0 +1,14 @@
+version: '2'
+services:
+  phpbb:
+    image: hypernumbernet/phpbb
+    ports:
+      - 80
+    volumes:
+      - ./data:/var/www/store
+  phpbb-lb:
+    image: rancher/lb-service-haproxy
+    ports:
+      - ${lb_port}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${host_label}
