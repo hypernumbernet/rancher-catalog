@@ -1,7 +1,7 @@
 name: Postgres Replication
 description: |
   Postgres Replication
-version: v0.1
+version: v0.2
 category: Databases
 maintainer: Tomohito Inoue
 projectURL: https://github.com/hypernumbernet/rancher-catalog
