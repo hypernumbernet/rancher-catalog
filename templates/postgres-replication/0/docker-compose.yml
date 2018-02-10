@@ -29,7 +29,7 @@ services:
     stdin_open: true
     labels:
       io.rancher.scheduler.affinity:host_label_soft: ${label_slave_db}
-      io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/postgres-master, io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack.name=$${stack_name}
       io.rancher.container.hostname_override: container_name
     volumes:
       - '/var/lib/postgresql/data'
