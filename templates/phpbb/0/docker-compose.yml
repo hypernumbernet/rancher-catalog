@@ -1,11 +1,5 @@
 version: '2'
 services:
-  phpbb:
-    image: hypernumbernet/phpbb-japanese
-    ports:
-      - 80
-    volumes:
-      - /var/www/store
   phpbb-lb:
     image: rancher/lb-service-haproxy
     ports:
@@ -14,3 +8,9 @@ services:
     labels:
       io.rancher.scheduler.affinity:host_label: ${host_label}
 {{- end}}
+  phpbb:
+    image: hypernumbernet/phpbb-japanese
+    ports:
+      - 80
+    volumes:
+      - /var/www/store
