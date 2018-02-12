@@ -5,8 +5,8 @@ catalog:
   description: "PostgreSQL"
   questions:
     - variable: port
-      description: "Port to access PostgreSQL from external services"
-      label: "Postgres Port. No value means no external port."
+      description: "Port to access PostgreSQL from external services. No value means no external port."
+      label: "Postgres Port"
       required: false
       default: 5432
       type: "int"
