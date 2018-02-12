@@ -1,0 +1,7 @@
+name: phpBB
+description: |
+  phpBB and Japanese package
+version: v0.2
+category: Forum
+maintainer: Tomohito Inoue
+projectURL: https://github.com/hypernumbernet/rancher-catalog

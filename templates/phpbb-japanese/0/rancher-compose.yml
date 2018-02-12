@@ -1,0 +1,27 @@
+version: '2'
+catalog:
+  name: "phpBB"
+  version: "v0.2"
+  description: "phpBB and Japanese package"
+  questions:
+    - variable: port
+      description: "Port to access phpBB"
+      label: "phpBB Port"
+      required: true
+      default: 80
+      type: "int"
+    - variable: host_label
+      label: "Host with Label to put phpBB on"
+      description: |
+        Example: 'phpbb=true'
+      type: "string"
+
+services:
+  phpbb:
+    scale: 1
+    health_check:
+      port: 80
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000

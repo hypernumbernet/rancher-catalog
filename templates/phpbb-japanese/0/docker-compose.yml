@@ -1,0 +1,12 @@
+version: '2'
+services:
+  phpbb:
+    image: hypernumbernet/phpbb-japanese
+{{- if ne .Values.host_label ""}}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+{{- end}}
+    ports:
+      - "${port}:80"
+    volumes:
+      - /var/www/store
