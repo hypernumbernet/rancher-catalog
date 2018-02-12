@@ -38,13 +38,6 @@ services:
     links:
       - 'postgres-master'
 
-  postgres-lb-master:
-    image: rancher/lb-service-haproxy
-    ports:
-      - ${lb_port}
-    labels:
-      io.rancher.scheduler.affinity:host_label_soft: ${label_master_lb}
-
   postgres-lb-slave:
     image: rancher/lb-service-haproxy
     ports:
