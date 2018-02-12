@@ -1,7 +1,7 @@
 version: '2'
 services:
   phpbb:
-    image: hypernumbernet/phpbb
+    image: hypernumbernet/phpbb-japanese
     ports:
       - 80
     volumes:

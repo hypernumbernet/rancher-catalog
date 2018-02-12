@@ -1,7 +1,7 @@
 name: phpBB
 description: |
   phpBB is an Internet forum package in the PHP scripting language.
-version: v0.1
+version: v0.2
 category: Forum
 maintainer: Tomohito Inoue
 projectURL: https://github.com/hypernumbernet/rancher-catalog

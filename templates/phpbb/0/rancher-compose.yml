@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "phpBB"
-  version: "v0.1"
+  version: "v0.2"
   description: "phpBB"
   questions:
     - variable: lb_port
