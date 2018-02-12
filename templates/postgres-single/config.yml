@@ -1,0 +1,5 @@
+name: PostgreSQL Single
+description: |
+  PostgreSQL single host. local valume. no LB.
+version: v0.1
+category: Databases
