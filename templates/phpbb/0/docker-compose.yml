@@ -10,5 +10,7 @@ services:
     image: rancher/lb-service-haproxy
     ports:
       - ${lb_port}
+{{- if ne .Values.host_label ""}}
     labels:
       io.rancher.scheduler.affinity:host_label: ${host_label}
+{{- end}}

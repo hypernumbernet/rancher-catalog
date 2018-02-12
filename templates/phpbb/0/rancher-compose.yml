@@ -14,8 +14,6 @@ catalog:
       label: "Host with Label to put phpBB on"
       description: |
         Example: 'phpbb=true'
-      required: true
-      default: "phpbb=true"
       type: "string"
 
 services:
