@@ -2,7 +2,7 @@ version: '2'
 catalog:
   name: "phpBB"
   version: "v0.2"
-  description: "phpBB and Japanese package"
+  description: "phpBB with Japanese language pack"
   questions:
     - variable: port
       description: "Port to access phpBB"
