@@ -14,8 +14,8 @@ services:
       io.rancher.scheduler.affinity:host_label_soft: ${label_master_db}
     volumes:
       - '/var/lib/postgresql/data'
-    expose:
-      - '5432'
+    ports:
+      - '${lb_port}:5432'
 
   postgres-slave:
     image: 'danieldent/postgres-replication'
