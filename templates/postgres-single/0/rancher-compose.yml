@@ -7,7 +7,7 @@ catalog:
     - variable: port
       description: "Port to access PostgreSQL from external services. No value means no external port."
       label: "Postgres Port"
-      required: false
+      required: true
       default: 5432
       type: "int"
     - variable: postgres_db

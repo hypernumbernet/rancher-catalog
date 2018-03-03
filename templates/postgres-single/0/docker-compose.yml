@@ -13,9 +13,7 @@ services:
     labels:
       io.rancher.scheduler.affinity:host_label: ${host_label}
 {{- end}}
-{{- if ne .Values.port ""}}
     ports:
       - "${port}:5432"
-{{- end}}
     volumes:
       - /var/lib/postgresql/data/pgdata
