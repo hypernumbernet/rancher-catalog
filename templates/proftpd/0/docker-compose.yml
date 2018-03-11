@@ -1,0 +1,16 @@
+version: '2'
+services:
+  proftpd:
+    image: hypernumbernet/proftpd
+    environment:
+      FTP_PORT: ${ftp_port}
+      FTP_PASSIVE_PORTS_MIN: ${ftp_passive_ports_min}
+      FTP_PASSIVE_PORTS_MAX: ${ftp_passive_ports_max}
+      MASQUERADE_ADDRESS: ${masquerade_address}
+{{- if ne .Values.host_label ""}}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+{{- end}}
+    network_mode: "host"
+    volumes:
+      - /ftp

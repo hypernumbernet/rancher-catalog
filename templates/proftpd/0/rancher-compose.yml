@@ -1,0 +1,33 @@
+version: '2'
+catalog:
+  name: "ProFTPD"
+  version: "v0.1"
+  description: "Highly configurable GPL-licensed FTP server software"
+  questions:
+    - variable: ftp_port
+      label: "FTP Port"
+      description: "Port to access FTP"
+      required: true
+      default: 21
+      type: "int"
+    - variable: ftp_passive_ports_min
+      label: "Passive ports Min"
+      description: "Minimum value of Passive ports"
+      required: true
+      default: 30000
+      type: "int"
+    - variable: ftp_passive_ports_max
+      label: "Passive ports Max"
+      description: "Maximum value of Passive ports"
+      required: true
+      default: 30015
+      type: "int"
+    - variable: masquerade_address
+      label: "Masquerade Address"
+      description: "The public name or IP address of the NAT"
+      type: "string"
+    - variable: host_label
+      label: "Host with Label to put ProFTPD on"
+      description: |
+        Example: 'proftpd=true'
+      type: "string"

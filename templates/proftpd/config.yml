@@ -1,0 +1,5 @@
+name: ProFTPD
+description: |
+  Highly configurable GPL-licensed FTP server software
+version: v0.1
+category: FTP
