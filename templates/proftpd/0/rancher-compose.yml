@@ -4,6 +4,16 @@ catalog:
   version: "v0.1"
   description: "Highly configurable GPL-licensed FTP server software"
   questions:
+    - variable: username
+      label: "Username"
+      description: "Login Username"
+      required: true
+      type: "string"
+    - variable: password
+      label: "Password"
+      description: "Login Password"
+      required: true
+      type: "string"
     - variable: ftp_port
       label: "FTP Port"
       description: "Port to access FTP"
@@ -25,6 +35,7 @@ catalog:
     - variable: masquerade_address
       label: "Masquerade Address"
       description: "The public name or IP address of the NAT"
+      required: true
       type: "string"
     - variable: host_label
       label: "Host with Label to put ProFTPD on"
