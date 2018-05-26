@@ -1,0 +1,39 @@
+version: '2'
+services:
+
+  postgres-master:
+    image: 'danieldent/postgres-replication'
+    environment:
+      POSTGRES_DB: ${postgres_db}
+      POSTGRES_USER: ${postgres_user}
+      POSTGRES_PASSWORD: ${postgres_password}
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+    tty: true
+    stdin_open: true
+    labels:
+      io.rancher.scheduler.affinity:host_label_soft: ${label_master_db}
+    volumes:
+      - '/var/lib/postgresql/data'
+    ports:
+      - '${pg_port}:5432'
+
+  postgres-slave:
+    image: 'danieldent/postgres-replication'
+    environment:
+      POSTGRES_DB: ${postgres_db}
+      POSTGRES_USER: ${postgres_user}
+      POSTGRES_PASSWORD: ${postgres_password}
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+      REPLICATE_FROM: 'postgres-master'
+    tty: true
+    stdin_open: true
+    labels:
+      io.rancher.scheduler.affinity:host_label_soft: ${label_slave_db}
+      io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack.name=$${stack_name}
+      io.rancher.container.hostname_override: container_name
+    volumes:
+      - '/var/lib/postgresql/data'
+    ports:
+      - '${pg_port}:5432'
+    links:
+      - 'postgres-master'

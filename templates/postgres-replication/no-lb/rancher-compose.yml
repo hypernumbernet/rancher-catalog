@@ -1,0 +1,64 @@
+version: '2'
+catalog:
+  name: "Postgres Replication"
+  version: "No LB"
+  description: "Postgres Replication"
+  questions:
+    - variable: pg_port
+      description: "Port to access PostgreSQL from external services"
+      label: "Postgres Port"
+      required: true
+      default: 5432
+      type: "int"
+    - variable: postgres_db
+      description: "Postgres Database"
+      label: "Postgres Database"
+      required: true
+      default: "database1"
+      type: "string"
+    - variable: postgres_user
+      description: "Postgres User"
+      label: "Postgres User"
+      required: true
+      default: "user"
+      type: "string"
+    - variable: postgres_password
+      description: "Postgres Password"
+      label: "Postgres Password"
+      required: true
+      default: "password"
+      type: "string"
+    - variable: label_master_db
+      label: "Host with Label to put DB Master on"
+      description: |
+        Example: 'postgres-db=master'
+      type: "string"
+    - variable: label_slave_db
+      label: "Host with Label to put DB Slave on"
+      description: |
+        Example: 'postgres-db=slave'
+      type: "string"
+    - variable: postgres_scale
+      description: "Number of postgres replication slaves."
+      label: "Postgres scale:"
+      required: true
+      default: 3
+      type: "int"
+
+services:
+  postgres-master:
+    scale: 1
+    health_check:
+      port: 5432
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
+  postgres-slave:
+    scale: ${postgres_scale}
+    health_check:
+      port: 5432
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
