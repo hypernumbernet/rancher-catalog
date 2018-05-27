@@ -4,6 +4,14 @@ catalog:
   version: "v0.1"
   description: "A web based administration tool for the PostgreSQL database."
   questions:
+    - variable: pgadmin_email
+      label: "Email address"
+      description: "This is the email address used when setting up the initial administrator account to login to pgAdmin."
+      type: "string"
+    - variable: pgadmin_password
+      label: "Password"
+      description: "This is the password used when setting up the initial administrator account to login to pgAdmin."
+      type: "string"
     - variable: port
       description: "Port to access pgAdmin4"
       label: "pgAdmin4 Port"
