@@ -3,4 +3,5 @@ description: |
   The leading Open Source management tool for Postgres.
 version: v0.1
 category: Database
+maintainer: 
 projectURL: https://www.pgadmin.org/
