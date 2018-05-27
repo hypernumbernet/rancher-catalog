@@ -1,0 +1,6 @@
+name: pgAdmin 4
+description: |
+  The leading Open Source management tool for Postgres.
+version: v0.1
+category: Database
+projectURL: https://www.pgadmin.org/

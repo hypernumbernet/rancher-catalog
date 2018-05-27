@@ -1,0 +1,10 @@
+version: '2'
+services:
+  pgadmin4:
+    image: dpage/pgadmin4
+{{- if ne .Values.host_label ""}}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${host_label}
+{{- end}}
+    ports:
+      - "${port}:80"

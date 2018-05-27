@@ -1,0 +1,27 @@
+version: '2'
+catalog:
+  name: "pgAdmin4"
+  version: "v0.1"
+  description: "A web based administration tool for the PostgreSQL database."
+  questions:
+    - variable: port
+      description: "Port to access pgAdmin4"
+      label: "pgAdmin4 Port"
+      required: true
+      default: 80
+      type: "int"
+    - variable: host_label
+      label: "Host with Label to put pgAdmin4 on"
+      description: |
+        Example: 'pgadmin4=true'
+      type: "string"
+
+services:
+  pgadmin4:
+    scale: 1
+    health_check:
+      port: 80
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
